@@ -1,3 +1,13 @@
+/*
+ * Parser.h
+ *
+ * This file is part of the CodebookRuntimeCpp-Config project.
+ *
+ * Copyright (c) 2026 Sopranoworks, Osamu Takahashi
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 #pragma once
 
 #include "Lexer.h"

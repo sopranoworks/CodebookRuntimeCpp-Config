@@ -1,4 +1,6 @@
 [![C++ CI](https://github.com/sopranoworks/CodebookRuntimeCpp-Config/actions/workflows/ci.yml/badge.svg)](https://github.com/sopranoworks/CodebookRuntimeCpp-Config/actions)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/sopranoworks/CodebookRuntimeCpp-Config/releases/tag/v1.0.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 # CodebookRuntimeCpp-Config
 
