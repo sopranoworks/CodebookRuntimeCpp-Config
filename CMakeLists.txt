@@ -27,5 +27,11 @@ target_link_libraries(test_Value
     PRIVATE CodebookRuntimeConfig GTest::gtest_main
 )
 
+add_executable(test_Lexer tests/test_Lexer.cpp)
+target_link_libraries(test_Lexer
+    PRIVATE CodebookRuntimeConfig GTest::gtest_main
+)
+
 include(GoogleTest)
 gtest_discover_tests(test_Value)
+gtest_discover_tests(test_Lexer)
