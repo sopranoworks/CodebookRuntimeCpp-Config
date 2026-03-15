@@ -1,4 +1,4 @@
-[![C++ CI](https://github.com/[USER]/CodebookRuntimeCpp-Config/actions/workflows/ci.yml/badge.svg)](https://github.com/[USER]/CodebookRuntimeCpp-Config/actions/workflows/ci.yml)
+[![C++ CI](https://github.com/sopranoworks/CodebookRuntimeCpp-Config/actions/workflows/ci.yml/badge.svg)](https://github.com/sopranoworks/CodebookRuntimeCpp-Config/actions)
 
 # CodebookRuntimeCpp-Config
 
