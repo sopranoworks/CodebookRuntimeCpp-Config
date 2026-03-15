@@ -12,6 +12,12 @@ namespace CodebookRuntime::Config {
 
 class Value {
 public:
+    // Represents an unresolved ${path} or ${?path} substitution.
+    struct Placeholder {
+        std::string path;
+        bool        optional = false;
+    };
+
     using Storage = std::variant<
         std::monostate,
         bool,
@@ -19,19 +25,21 @@ public:
         double,
         std::string,
         Array,
-        Object
+        Object,
+        Placeholder
     >;
 
     Value() = default;
-    Value(std::monostate v) : storage_(v) {}
-    Value(bool v)        : storage_(v) {}
-    Value(int64_t v)     : storage_(v) {}
-    Value(int v)         : storage_(static_cast<int64_t>(v)) {}
-    Value(double v)      : storage_(v) {}
-    Value(std::string v) : storage_(std::move(v)) {}
-    Value(const char* v) : storage_(std::string(v)) {}
-    Value(Array v)       : storage_(std::move(v)) {}
-    Value(Object v)      : storage_(std::move(v)) {}
+    Value(std::monostate v)  : storage_(v) {}
+    Value(bool v)            : storage_(v) {}
+    Value(int64_t v)         : storage_(v) {}
+    Value(int v)             : storage_(static_cast<int64_t>(v)) {}
+    Value(double v)          : storage_(v) {}
+    Value(std::string v)     : storage_(std::move(v)) {}
+    Value(const char* v)     : storage_(std::string(v)) {}
+    Value(Array v)           : storage_(std::move(v)) {}
+    Value(Object v)          : storage_(std::move(v)) {}
+    Value(Placeholder v)     : storage_(std::move(v)) {}
 
     // Returns value if the stored type exactly matches T.
     template <typename T>
@@ -81,6 +89,7 @@ public:
         }
     }
 
+    Storage&       raw()       { return storage_; }
     const Storage& raw() const { return storage_; }
 
 private:

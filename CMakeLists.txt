@@ -37,7 +37,13 @@ target_link_libraries(test_Parser
     PRIVATE CodebookRuntimeConfig GTest::gtest_main
 )
 
+add_executable(test_Final tests/test_Final.cpp)
+target_link_libraries(test_Final
+    PRIVATE CodebookRuntimeConfig GTest::gtest_main
+)
+
 include(GoogleTest)
 gtest_discover_tests(test_Value)
 gtest_discover_tests(test_Lexer)
 gtest_discover_tests(test_Parser)
+gtest_discover_tests(test_Final)

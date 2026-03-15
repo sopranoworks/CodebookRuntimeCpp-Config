@@ -226,6 +226,21 @@ private:
                 if (end && *end == '\0') { advance(); return Value(dval); }
                 return std::nullopt;
             }
+            case TokenType::Substitution: {
+                advance();   // consume '${'
+                if (at_eof() || cur().type != TokenType::UnquotedString)
+                    return std::nullopt;
+                std::string path = cur().value;
+                advance();   // consume path token
+                bool optional = false;
+                if (!path.empty() && path[0] == '?') {
+                    optional = true;
+                    path = path.substr(1);
+                }
+                if (!peek_is(TokenType::RBrace)) return std::nullopt;
+                advance();   // consume '}'
+                return Value(Value::Placeholder{std::move(path), optional});
+            }
             default:
                 return std::nullopt;
         }
